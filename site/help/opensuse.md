@@ -16,14 +16,32 @@ next: false
 sudo zypper mr -da
 ```
 
-## 添加南科大镜像源，以 openSUSE Leap 42.3 为例：
+## openSUSE Leap 15.3 或更新版本使用方法：
 
 ``` sh
-sudo zypper ar -fcg https://mirrors.sustech.edu.cn/opensuse/distribution/leap/42.3/repo/oss SUSTC:42.3:OSS
-sudo zypper ar -fcg https://mirrors.sustech.edu.cn/opensuse/distribution/leap/42.3/repo/non-oss SUSTC:42.3:NON-OSS
-sudo zypper ar -fcg https://mirrors.sustech.edu.cn/opensuse/update/leap/42.3/oss SUSTC:42.3:UPDATE-OSS
-sudo zypper ar -fcg https://mirrors.sustech.edu.cn/opensuse/update/leap/42.3/non-oss SUSTC:42.3:UPDATE-NON-OSS
+sudo zypper ar -fcg https://mirrors.sustech.edu.cn/opensuse/distribution/leap/$releasever/repo/oss sustech-oss
+sudo zypper ar -fcg https://mirrors.sustech.edu.cn/opensuse/distribution/leap/$releasever/repo/non-oss sustech-non-oss
+sudo zypper ar -fcg https://mirrors.sustech.edu.cn/opensuse/update/leap/$releasever/oss sustech-update-oss
+sudo zypper ar -fcg https://mirrors.sustech.edu.cn/opensuse/update/leap/$releasever/non-oss sustech-update-non-oss
 ```
+
+Leap 15.3 用户还需添加 sle 和 backports 源
+
+``` sh
+sudo zypper ar -fcg 'https://mirrors.sustech.edu.cn/opensuse/update/leap/$releasever/sle/' sustech-sle-update
+sudo zypper ar -fcg 'https://mirrors.sustech.edu.cn/opensuse/update/leap/$releasever/backports/' sustech-backports-update
+```
+
+Leap 15.3 注：若在安装时没有启用在线软件源， sle 源和 backports 源将在系统首次更新后引入，请确保系统在更新后仅启用了六个所需软件源。可使用 zypper lr 检查软件源状态，并使用 zypper mr -d 禁用多余的软件源。
+
+## openSUSE Tumbleweed 使用方法
+
+``` sh
+sudo zypper ar -fcg https://mirrors.sustech.edu.cn/opensuse/tumbleweed/repo/oss sustech-oss
+sudo zypper ar -fcg https://mirrors.sustech.edu.cn/opensuse/tumbleweed/repo/non-oss sustech-non-oss
+```
+
+Tumbleweed 注： Tumbleweed 安装后默认会启用 oss, non-oss, update, 3 个官方软件源， 其中 oss 及 non-oss 源用于发布 Tumbleweed 的每日构建快照，快照中已包含系统所需的全部软件包及更新。 update 源仅用于推送临时安全补丁，如当日快照已发布但仍有临时安全补丁时，会首先推送至 update 源，并在次日合入下一版快照。 由于 update 源存在较强的时效性，上游镜像并未同步 update 源， TUNA 亦无法提供该源的镜像。 禁用 update 源并不会使系统缺失任何功能或安全更新，仅会导致极少数更新晚些推送，如有需求可以重新启用官方 update 源。
 
 命令中最后一个参数为每一个源指定了一个 alias （别称），可以根据个人喜好更改。
 
@@ -35,13 +53,13 @@ sudo zypper ref
 
 ### 图形界面下配置方法
 
-以 openSUSE Leap 42.3 为例：
+以 openSUSE Leap 15.3 为例：
 
 1. 打开 YaST；
 2. 点击 Software 分组中的 Software Repositories；
-3. 在打开的窗口上方的列表中点击 openSUSE-Leap-42.3-Oss ，点击 Edit；
-4. 将 download.opensuse.org 替换为 mirrors.ustc.edu.cn/opensuse，点OK；
-5. 再用同样的方法编辑 openSUSE-Leap-42.3-Oss 和 openSUSE-Leap-42.3-Oss。
+3. 在打开的窗口上方的列表中点击 Main Repository，点击 Edit；
+4. 将 download.opensuse.org 替换为 mirrors.sustech.edu.cn/opensuse，点 OK；
+5. 再用同样的方法编辑 Non-OSS Repository, Main Update Repository, Update Repository (Non-Oss) 和 Update repository with updates from SUSE Linux Enterprise 15。
 
 ## 注意事项
 
@@ -63,3 +81,4 @@ sudo zypper ref
 ## 参考文档
 
 [https://mirrors.ustc.edu.cn/help/opensuse.html](https://mirrors.ustc.edu.cn/help/opensuse.html)
+[https://mirrors.tuna.tsinghua.edu.cn/help/opensuse/](https://mirrors.tuna.tsinghua.edu.cn/help/opensuse/)
