@@ -17,8 +17,8 @@ The PyPI Mirror is synchronized with [pypi.org](https://pypi.org) with [bandersn
 ## TL;DR
 
 ``` sh
-pip install --upgrade pip --index-url https://mirrors.sustech.edu.cn/pypi/simple
-pip config set global.index-url https://mirrors.sustech.edu.cn/pypi/simple
+pip install --upgrade pip --index-url https://mirrors.sustech.edu.cn/pypi/web/simple
+pip config set global.index-url https://mirrors.sustech.edu.cn/pypi/web/simple
 ```
 
 That's all.
@@ -52,7 +52,7 @@ You may need to replace `pip` with `pip3`.
 #### For pip >= 10.0
 
 ``` sh
-pip config set global.index-url https://mirrors.sustech.edu.cn/pypi/simple
+pip config set global.index-url https://mirrors.sustech.edu.cn/pypi/web/simple
 ```
 
 ::: warning
@@ -66,14 +66,14 @@ You can upgrade to the latest version first:
 
 ``` sh
 # you may need root privilege
-pip install --upgrade pip --index-url https://mirrors.sustech.edu.cn/pypi/simple
+pip install --upgrade pip --index-url https://mirrors.sustech.edu.cn/pypi/web/simple
 ```
 
 Or, you can stay with the old version and manually edit the configuration file with your text editor:
 
 ``` toml
 [global]
-index-url = https://mirrors.sustech.edu.cn/pypi/simple
+index-url = https://mirrors.sustech.edu.cn/pypi/web/simple
 ```
 
 Path of the per-user configuration file:
@@ -89,7 +89,7 @@ You can refer to [pip user guide](https://pip.pypa.io/en/stable/user_guide/#conf
 ## Temporary Use
 
 ``` sh
-pip install package-name --index-url https://mirrors.sustech.edu.cn/pypi/simple
+pip install package-name --index-url https://mirrors.sustech.edu.cn/pypi/web/simple
 ```
 
 ## Install Packages without Root Privilege
