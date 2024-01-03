@@ -41,3 +41,11 @@
     <source srcset="/status/vnstat-last-month-dark.png" media="(prefers-color-scheme: dark)">
     <img src="/status/vnstat-last-month.png">
 </picture>
+
+### Top 15 URL Paths by Traffic (GB) Last Month
+
+<picture>
+    <source srcset="/site/log/url_traffic_dark.png" media="(prefers-color-scheme: dark)">
+    <img src="/site/log/url_traffic.png">
+</picture>
+
