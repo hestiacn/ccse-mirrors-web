@@ -13,7 +13,7 @@ next: false
 ## Backup Existing Configuration
 
 ``` sh
-mv /etc/apt/sources.list /etc/apt/sources.list.bak
+cp /etc/apt/sources.list /etc/apt/sources.list.bak
 ```
 
 ## Edit Configuration File
